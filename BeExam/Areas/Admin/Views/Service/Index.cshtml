@@ -1,0 +1,52 @@
+﻿@model List<Service>
+@{
+    int count = 0;
+}
+
+<div class="card-body">
+    <h4 class="card-title">Service Table</h4>
+    <a asp-controller="Service" asp-action="Create" class="btn btn-success">Create Service</a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (Service service in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>
+                            @count;
+                        </td>
+                        <td class="py-1">
+                            <img src="~/assets/images/@service.Image" alt="image">
+                        </td>
+                        <td>
+                            @service.Name
+                        </td>
+                        <td>
+                           <a asp-controller="Service" asp-action="Update" asp-route-id="@service.Id" class="btn btn-warning">Update</a>
+                            <a asp-controller="Service" asp-action="Delete" asp-route-id="@service.Id" class="btn btn-danger">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
